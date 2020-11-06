@@ -17,6 +17,10 @@ class RequestsController < ApplicationController
       render 'new'
     end
   end
+
+  def show
+    @request = Request.find(params[:id])
+  end
   
   def destroy
     @request = Request.find(params[:id])
@@ -28,6 +32,9 @@ class RequestsController < ApplicationController
 
   def request_params
     params.require(:request).permit(:docname, :attachment)
+    
+    #params.require(:request).permit(:docname, :attachment, :user_data => []) #add document_data as a permitted parameter
+    #Descomentar para salvar informações dos signatários
   end
 
 end
