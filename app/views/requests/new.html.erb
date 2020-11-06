@@ -1,0 +1,23 @@
+<h1>Criar nova solicitação</h1>
+
+<% if !@request.errors.empty? %>
+  <div>
+    <ul>
+      <% @request.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+<% end %>
+<div>
+  <%= form_for @request, html: { multipart: true } do |f| %>
+    <%= f.label :docname, "Nome do documento" %>
+    <%= f.text_field :docname %>
+    <br><br>
+    <%= f.label :attachment, "Inserir documento" %>
+    <%= f.file_field :attachment %>
+    <br>
+    <%= f.submit "Salvar" %>
+    <% end %>
+  </div>
+

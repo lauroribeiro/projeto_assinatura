@@ -1,0 +1,28 @@
+<h1>Solicitações de Assinatura</h1>
+
+<% if !flash[:notice].blank? %>
+  <div>
+    <%=flash[:notice] %>
+  </div>
+<% end %>
+ 
+<%= link_to "Nova Solicitação de Assinatura", new_request_path %>
+<br><br>
+<table>
+  <tr>
+    <th>Nome</th>
+    <th>Estado</th>
+    <th>Data</th>
+    <th colspan="2"></th>
+  </tr>
+  <!-- inserir embed ruby @request.each do -->
+  <% @request.each do |r| %>
+  <tr>
+    <td><%= r.docname %></td>
+    <td><%= r.state %></td>
+    <td><%= r.created_at %></td>
+    <td>placeholder for show</td>
+    <td>placeholder for destroy</td>
+  </tr>
+  <% end %>
+</table>
