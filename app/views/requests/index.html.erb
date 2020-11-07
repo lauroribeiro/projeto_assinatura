@@ -16,13 +16,15 @@
     <th colspan="2"></th>
   </tr>
   <!-- inserir embed ruby @request.each do -->
-  <% @request.each do |r| %>
+  <% @request.each do |request| %>
   <tr>
-    <td><%= r.docname %></td>
-    <td><%= r.state %></td>
-    <td><%= r.created_at %></td>
-    <td>placeholder for show</td>
-    <td>placeholder for destroy</td>
+    <td><%= request.docname %></td>
+    <td><%= request.state %></td>
+    <td><%= request.created_at.to_s(:request) %></td>
+    <td><%= link_to 'Mostrar', request_path(request)%></td>
+    <td><%= link_to 'Deletar', request_path(request),
+            method: :delete,
+            data: { confirm: 'Realmente deseja excluir?'}%></td>
   </tr>
   <% end %>
 </table>

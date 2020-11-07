@@ -11,6 +11,7 @@ class RequestsController < ApplicationController
   
   def create
     @request = Request.new(request_params)
+    @request.state = "Pendente"
     if @request.save
       redirect_to requests_path, notice: "O documento foi enviado."
     else
