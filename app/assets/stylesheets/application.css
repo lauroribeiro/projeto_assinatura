@@ -13,22 +13,3 @@
  *= require_tree .
  *= require_self
  */
-@import 'bootstrap';
-
-.jumbotron{
-  background-color: white;
-  text-align: center;
-  h1{
-    margin-bottom: 20px;
-  }
-}
-
-.image-wrapper {
-  margin-bottom: 50px;
-  text-align: center;
-
-}
-
-.row{
-  margin-bottom: 30px;
-}

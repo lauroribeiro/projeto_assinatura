@@ -1,16 +1,9 @@
-<table>
-  <tr>
-    <th>Signatario</th>
-    <th>E-mail</th>
-    <th>Assinatura</th>
-  </tr>
-  <tr>
-    <td><%= user.name %></td>
-    <td><%= user.email %></td> 
-    <td> <%= image_tag user.signature if user.signature? %></td>
-    <td><%= link_to "Assinar", edit_user_path(user) %></td>
 
-
+  <tr >
+    <td class="align-middle"><%= user.name %></td>
+    <td class="align-middle"><%= user.email %></td> 
+    <td class="align-middle" id="signature-table"> <%= image_tag(user.signature, class: "img-thumbnail") if user.signature? %></td>
+    <td class="align-middle text-center" id="actions"><%= link_to "Assinar", edit_user_path(user), class:"btn btn-outline-primary" %>
+      <%= link_to "Não Assinar", edit_user_path(user), class: "btn btn-outline-danger"  %></td>
   </tr>
 
-</table>

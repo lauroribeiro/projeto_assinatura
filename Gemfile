@@ -10,9 +10,7 @@ gem 'carrierwave', '~> 1.0'
 
 gem 'jquery-rails'
 
-gem 'rack-cors'
-
-gem 'bootstrap-sass'  
+gem 'bootstrap', '~> 4.5.2'
 
 gem 'john_hancock'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

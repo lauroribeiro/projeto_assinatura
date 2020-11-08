@@ -8,23 +8,29 @@
  
 <%= link_to "Nova Solicitação de Assinatura", new_request_path %>
 <br><br>
-<table>
-  <tr>
-    <th>Nome</th>
-    <th>Estado</th>
-    <th>Data</th>
-    <th colspan="2"></th>
-  </tr>
-  <!-- inserir embed ruby @request.each do -->
-  <% @request.each do |request| %>
-  <tr>
-    <td><%= request.docname %></td>
-    <td><%= request.state %></td>
-    <td><%= request.created_at.to_s(:request) %></td>
-    <td><%= link_to 'Mostrar', request_path(request)%></td>
-    <td><%= link_to 'Deletar', request_path(request),
-            method: :delete,
-            data: { confirm: 'Realmente deseja excluir?'}%></td>
-  </tr>
-  <% end %>
-</table>
+<div class="table-responsive">
+  <table class="table table-bordered table-hover">
+    <thead class="thead-light">
+      <tr>
+        <th scope="col">Nome</th>
+        <th scope="col">Estado</th>
+        <th scope="col">Data e Hora</th>
+        <th scope="col" colspan="2" class="text-center">Ações</th>
+      </tr>
+    </thead>
+    <!-- inserir embed ruby @request.each do -->
+    <tbody>
+      <% @request.each do |request| %>
+      <tr>
+        <td><%= request.docname %></td>
+        <td><%= request.state %></td>
+        <td><%= request.created_at.to_s(:request) %></td>
+        <td class="text-center" id="actions"><%= link_to 'Mostrar', request_path(request), class:"btn btn-outline-info" %>
+                                <%= link_to 'Cancelar', request_path(request), class:"btn btn-outline-danger",
+                method: :delete,
+                data: { confirm: 'Realmente deseja excluir?'}%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

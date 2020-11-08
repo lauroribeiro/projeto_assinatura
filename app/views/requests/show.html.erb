@@ -1,9 +1,37 @@
-<h1>Show Page</h1>
-<%= link_to "voltar",requests_path %>
+<div class="container">
+  
+</div>
 <br><br>
-<%= render @request.users %>
-<h2>Vincular Signatários</h2>
-<%= render 'users/form' %>
+<div class="container">
+  <h1 class="mb-5">Visualizar Documento</h1>
+  <%= link_to "Voltar",requests_path, class: "btn btn-secondary" %>
+  <a class="btn btn-primary view-pdf" href=<%= @request.attachment %> >Ver PDF</a>   
+  <div class="table-responsive mt-5">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-light">
+        <tr >
+          <th scope="col">Signatario</th>
+          <th scope="col">E-mail</th>
+          <th scope="col" >Assinatura</th>
+          <th class="text-center" scope="col" colspan="2" >Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @request.users %>
+      </tbody>
+      <div class="container mb-5">
+        <h2>Vincular Signatários</h2>
+        <%= render 'users/form' %>
+      </div>
+    </table>
+    
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      
+    </div>
+  </div>
+  
+</div>
 
-
-<iframe src=<%= @request.attachment %>  width="100%" height="700px" style="border: none;"> </iframe>

@@ -1,14 +1,17 @@
 <%= form_with(model: [@request, @request.users.build ], local:
 true) do |form| %>
-  <p>
-    <%= form.label 'Nome' %><br>
-    <%= form.text_field :name %><br>
-  </p>
-  <p>
-    <%= form.label 'E-mail' %><br>
-    <%= form.text_field :email %><br>
-  </p>
-  <p>
-    <%= form.submit 'Adicionar' %>
-  </p>
+  <div class="form-row">
+    <div class="col-md-6">
+      <%= form.label 'Nome' %><br>
+      <%= form.text_field :name, class:"form-control" %><br>
+    </div>
+    <div class="col-md-6">
+      <%= form.label 'E-mail' %><br>
+      <%= form.text_field :email, class:"form-control" %><br>
+    </div>
+    <div class="col-md-6">
+      <%= form.submit 'Vincular' %>
+    </div>
+  </div>
 <% end %>
+
