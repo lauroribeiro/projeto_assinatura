@@ -1,6 +1,6 @@
 class Request < ApplicationRecord
-  # has_one :document
-  # has_many :users
+  has_many :users
+  # accepts_nested_attributes_for :users
   # attr_accessor :user_data
   mount_uploader :attachment, AttachmentUploader
   validates :docname, presence: true

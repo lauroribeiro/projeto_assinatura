@@ -9,14 +9,19 @@
       </ul>
     </div>
 <% end %>
+
+
+  
+
 <div>
   <%= form_for @request, html: { multipart: true } do |f| %>
-    <%= f.label :docname, "Nome do documento" %>
+    <%= f.label :docname, "Nome do documento" %> <br>
     <%= f.text_field :docname %>
     <br><br>
     <%= f.label :attachment, "Inserir documento" %>
     <%= f.file_field :attachment %>
     <br>
+    
     <%= f.submit "Salvar" %>
     <%= link_to "Voltar", root_path %>
     <% end %>

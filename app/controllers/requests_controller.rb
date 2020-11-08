@@ -6,6 +6,7 @@ class RequestsController < ApplicationController
   
   def new
     @request = Request.new
+    # @request.users = Request.new
     
   end
   
@@ -13,7 +14,7 @@ class RequestsController < ApplicationController
     @request = Request.new(request_params)
     @request.state = "Pendente"
     if @request.save
-      redirect_to requests_path, notice: "O documento foi enviado."
+      redirect_to request_path(@request), notice: "O documento foi enviado."
     else
       render 'new'
     end
@@ -34,7 +35,7 @@ class RequestsController < ApplicationController
   def request_params
     params.require(:request).permit(:docname, :attachment)
     
-    #params.require(:request).permit(:docname, :attachment, :user_data => []) #add document_data as a permitted parameter
+    # params.require(:request).permit(:docname, :attachment, :user_data => []) #add document_data as a permitted parameter
     #Descomentar para salvar informações dos signatários
   end
 

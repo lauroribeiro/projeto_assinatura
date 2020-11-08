@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>Signatario</th>
+    <th>E-mail</th>
+    <th>Assinatura</th>
+  </tr>
+  <tr>
+    <td><%= user.name %></td>
+    <td><%= user.email %></td> 
+    <td> <%= image_tag user.signature if user.signature? %></td>
+    <td><%= link_to "Assinar", edit_user_path(user) %></td>
+
+
+  </tr>
+
+</table>

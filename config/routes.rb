@@ -1,6 +1,13 @@
 Rails.application.routes.draw do
-  resources :users
-  resources :requests, only: [:index, :new, :show, :create, :destroy]
+  resources :requests, except: [:edit] do
+    resources :users, only: [:new, :create,:update]
+  end
+  resources :users, except: [:new,:create]
+  
+  # resources :articles do
+  #   resources :comments, only: [:index, :new, :create]
+  # end
+  # resources :comments, only: [:show, :edit, :update, :destroy]
   root 'requests#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

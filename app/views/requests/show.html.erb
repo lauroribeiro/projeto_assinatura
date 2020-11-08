@@ -1,4 +1,9 @@
 <h1>Show Page</h1>
 <%= link_to "voltar",requests_path %>
 <br><br>
+<%= render @request.users %>
+<h2>Vincular Signatários</h2>
+<%= render 'users/form' %>
+
+
 <iframe src=<%= @request.attachment %>  style="border: none;"> </iframe>
