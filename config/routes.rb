@@ -2,8 +2,10 @@ Rails.application.routes.draw do
   resources :requests, except: [:edit] do
     resources :users, only: [:new, :create,:update]
   end
-  resources :users, except: [:new,:create]
-  
+  resources :users, except: [:new,:create] do
+    get 'refuse', to: 'users'
+    post 'refuse', to: 'users#refuse'
+  end
   # resources :articles do
   #   resources :comments, only: [:index, :new, :create]
   # end

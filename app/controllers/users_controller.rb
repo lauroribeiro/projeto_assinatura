@@ -16,7 +16,10 @@ class UsersController < ApplicationController
   def update
     # @request = Request.find(params[:request_id])
     @user = User.find(params[:id])
+    @request = Request.find(@user.request_id)
+    @user.signed = true
     if @user.update(user_signature_params)
+      # @request.update(set_state(@request))
       redirect_to request_path(@user.request_id)
     else
       render 'edit'
@@ -28,13 +31,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def destroy
-    @request = Request.find(params[:request_id])
-    @user = @request.users.find(params[:id])
-    @user.destroy
-
-    redirect_to request_path(@request)
-  end
+  # def refuse
+  #   @user = User.find(params[:user_id])
+  #   # @user.reason = params
+  #   # @user.update(params.require(:user).permit(:reason))
+  #   # redirect_to request_path(@user.request_id)
+  # end
 
   private
   def user_params
@@ -43,4 +45,7 @@ class UsersController < ApplicationController
   def user_signature_params
     params.require(:user).permit(:signature)
   end
+
+
+
 end

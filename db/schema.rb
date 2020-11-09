@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20201107142141) do
+ActiveRecord::Schema.define(version: 20201109181148) do
 
   create_table "requests", force: :cascade do |t|
     t.string "docname"
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 20201107142141) do
     t.integer "request_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "reason"
+    t.boolean "signed"
     t.index ["request_id"], name: "index_users_on_request_id"
   end
 

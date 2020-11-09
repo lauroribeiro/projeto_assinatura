@@ -2,8 +2,9 @@
   <tr >
     <td class="align-middle"><%= user.name %></td>
     <td class="align-middle"><%= user.email %></td> 
-    <td class="align-middle" id="signature-table"> <%= image_tag(user.signature, class: "img-thumbnail") if user.signature? %></td>
+    <td class="align-middle" id="signature-table"> 
+      <%= image_tag(user.signature, class: "img-thumbnail") if user.signature? %></td>
     <td class="align-middle text-center" id="actions"><%= link_to "Assinar", edit_user_path(user), class:"btn btn-outline-primary" %>
-      <%= link_to "Não Assinar", edit_user_path(user), class: "btn btn-outline-danger"  %></td>
+      <%= link_to "Não Assinar" ,user_refuse_path(user), class: "btn btn-outline-danger", method: :get %></td>
   </tr>
 

@@ -1,0 +1,6 @@
+<h1>Informe o motivo da recusa</h1>
+<%= form_with(model: @user, local: true) do |form| %>
+<%= form.text_area :reason, class:"form-control"%>
+<%= form.submit 'Enviar' %>
+<%= link_to 'Voltar', :back %>
+<% end %>

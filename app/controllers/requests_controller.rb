@@ -1,7 +1,10 @@
 class RequestsController < ApplicationController
   
+
   def index
     @request = Request.all
+    update_state()
+    # set_state(@request)
   end
   
   def new
@@ -31,12 +34,28 @@ class RequestsController < ApplicationController
   end
 
   private
-
+  
   def request_params
     params.require(:request).permit(:docname, :attachment)
     
-    # params.require(:request).permit(:docname, :attachment, :user_data => []) #add document_data as a permitted parameter
-    #Descomentar para salvar informações dos signatários
   end
+
+  def update_state
+    state_string = nil
+    request = Request.all
+    request.each do |r|
+      r.users.each do |user|
+        if user.signed.nil?
+          state_string = "Pendente"
+        elsif user.signed == false
+          state_string = "Reprovada"  
+        else
+          state_string = "Aprovada"
+        end
+      end
+      r.update(:state => "#{state_string}")
+    end
+  end
+ 
 
 end
