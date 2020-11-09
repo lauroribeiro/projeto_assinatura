@@ -7,7 +7,9 @@ class UsersController < ApplicationController
   def create
     @request = Request.find(params[:request_id])
     @user = @request.users.create(user_params)
-
+    if !@user.nil?
+      UserMailer.notify_email(@user).deliver_later
+    end
     redirect_to request_path(@request)
   end
 
