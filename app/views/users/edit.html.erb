@@ -1,7 +1,9 @@
 <h1>Assinatura</h1>
 
 <%= form_with(model: @user, local: true) do |f| %>
+<div id="signature_field" >
   <%= f.signature_field :signature %>
+</div>
   <%= f.submit %>
 <% end %>
 <button onclick=signatureClear()>Limpar</button>
