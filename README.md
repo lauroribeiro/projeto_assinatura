@@ -6,3 +6,4 @@ Projeto de Solicitação de Assinatura, feito como parte de um processo seletivo
 
 * Rails 5.1.7
 
+* Bootstrap 4.3.1
