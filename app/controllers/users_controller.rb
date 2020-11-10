@@ -7,22 +7,18 @@ class UsersController < ApplicationController
   def create
     @request = Request.find(params[:request_id])
     @user = @request.users.create(user_params)
-    if !@user.nil?
+    if !@user.id.nil?
       UserMailer.notify_email(@user).deliver_later
     end
     redirect_to request_path(@request)
   end
 
   def update
-    # @request = Request.find(params[:request_id])
     @user = User.find(params[:id])
     @request = Request.find(@user.request_id)
     @user.signed = true
     if @user.update(user_signature_params)
-      # @request.update(set_state(@request))
       redirect_to request_path(@user.request_id)
-    else
-      render 'edit'
     end
   end
 
@@ -31,12 +27,16 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  # def refuse
-  #   @user = User.find(params[:user_id])
-  #   # @user.reason = params
-  #   # @user.update(params.require(:user).permit(:reason))
-  #   # redirect_to request_path(@user.request_id)
-  # end
+  def refuse_page
+    @user = User.find(params[:user_id])
+  end
+      #Não funcionam
+  def refuse
+    @user = User.find(params[:user_id])
+    @user.reason = params.require(:user).permit(:reason)
+    @user.update(@user.signed => false)
+    # redirect_to request_path(@user.request_id)
+  end
 
   private
   def user_params

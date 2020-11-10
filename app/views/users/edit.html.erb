@@ -1,9 +1,10 @@
 <h1>Assinatura</h1>
 
 <%= form_with(model: @user, local: true) do |f| %>
-<div id="signature_field" >
-  <%= f.signature_field :signature %>
-</div>
-  <%= f.submit %>
-<% end %>
-<button onclick=signatureClear()>Limpar</button>
+  <div id="signature_field" class="mb-1">
+    <%= f.signature_field :signature%>
+  </div>
+  <button class="btn btn-secondary" type="button" onclick=signatureClear()>Limpar</button>
+  <a class="btn btn-info view-pdf" href=<%= Request.find(@user.request_id).attachment %> >Ver PDF</a>   
+  <%= f.submit 'Assinar', class:"btn btn-primary"%>
+  <% end %>

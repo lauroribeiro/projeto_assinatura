@@ -1,29 +1,28 @@
 <h1>Criar nova solicitação</h1>
 
 <% if !@request.errors.empty? %>
-  <div>
+<div class="alert alert-danger col-5 alert-dismissible fade show" role="alert">
+  <h4 class="alert-heading">Algo aconteceu!</h4>
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
     <ul>
       <% @request.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
-        <% end %>
+      <% end %>
       </ul>
     </div>
 <% end %>
 
 
-  
-
 <div>
   <%= form_for @request, html: { multipart: true } do |f| %>
-    <%= f.label :docname, "Nome do documento" %> <br>
-    <%= f.text_field :docname %>
-    <br><br>
+    <%= f.label :docname, "Nome do documento" %>
+    <%= f.text_field :docname , class:"form-control col-5"%>
     <%= f.label :attachment, "Inserir documento" %>
-    <%= f.file_field :attachment %>
-    <br>
-    
-    <%= f.submit "Salvar" %>
-    <%= link_to "Voltar", root_path %>
+    <%= f.file_field :attachment , class: "form-control col-5"%>
+    <%= f.submit "Salvar" ,class:"btn btn-primary"%>
+    <%= link_to "Voltar", :back, class: "btn btn-outline-secondary" %>
     <% end %>
 </div>
 

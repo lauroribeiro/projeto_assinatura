@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :users, only: [:new, :create,:update]
   end
   resources :users, except: [:new,:create] do
-    get 'refuse', to: 'users'
+    get 'refuse_page'
     post 'refuse', to: 'users#refuse'
   end
   # resources :articles do

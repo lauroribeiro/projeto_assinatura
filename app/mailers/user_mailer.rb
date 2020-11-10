@@ -3,7 +3,8 @@ class UserMailer < ApplicationMailer
 
   def notify_email(user)
     @user = user
-    @url = "#{Rails.root}#{Request.find(user.request_id).attachment}"
+    @url = "#{Rails.root}/user/#{@user.id}/edit}"
+    # @url = "#{Rails.root}#{edit_user_path(@user)}"
     mail(to: @user.email, subject: "Solicitação de Assinatura")
   end
 end

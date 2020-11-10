@@ -11,14 +11,17 @@
   color: orange ;
   float: left;
   font-size: 1.7em;
-  // text-transform: uppercase;
-  // letter-spacing: -1px;
-  // font-weight: bold;
 }
 #home-container{
   margin-top: 25px;
 }
 .jumbotron{
+    h1{
+      // vertical-align: middle;
+      color: black;
+      font-weight: 200;
+      text-shadow: 3px 3px orange;
+    }
   background-image: asset_url('jumbo-photo.jpg');
   background-position: center center;
   background-repeat: no-repeat;
